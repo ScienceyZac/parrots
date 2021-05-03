@@ -16,6 +16,7 @@ export class ParrotsComponent {
     if (!parrot.desc) return alert('you need to provide a description');
     if (this.parrots.filter((p) => p.name == parrot.name)[0])
       return alert(`the parrot: "${parrot.name}" already exists`);
+    console.log(parrot);
     localStorage.setItem(parrot.name, JSON.stringify(parrot));
     this.parrots.push(parrot);
     console.log(this.parrots);
@@ -23,8 +24,7 @@ export class ParrotsComponent {
   getParrots = () => {
     for (let i = 0; i < localStorage.length; i++) {
       let parrot = localStorage.getItem(localStorage.key(i));
-      console.log('hi');
-      // console.log(parrot);
+      console.log(parrot);
       this.parrots.push(JSON.parse(parrot));
       console.log(this.parrots);
     }

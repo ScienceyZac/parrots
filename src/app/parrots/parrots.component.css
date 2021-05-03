@@ -1,0 +1,12 @@
+.wanted {
+  background-color: red;
+  color: white;
+}
+.owned {
+  background-color: blue;
+  color: white;
+}
+.looks-nice {
+  background-color: green;
+  color: white;
+}

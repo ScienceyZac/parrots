@@ -1,5 +1,17 @@
 <p><input placeholder="name" type="text" id="name" name="name" #name /></p>
 <p><input placeholder="image url" type="url" id="img" name="img" #img /></p>
+<input
+  placeholder="options"
+  type="text"
+  name="options"
+  list="optionsList"
+  #option
+/>
+<datalist id="optionsList">
+  <option value="owned"></option>
+  <option value="looks cool"></option>
+  <option value="wanted"></option>
+</datalist>
 <p>
   <input
     placeholder="description"
@@ -15,18 +27,30 @@
     addParrot({
       name: name.value,
       img: img.value,
-      desc: desc.value
+      desc: desc.value,
+      option: option.value
     })
   "
 >
   add parrot
 </button>
 
-<div *ngIf="parrots.length">
-  <div *ngFor="let parrot of parrots">
+<div class="parrots" *ngIf="parrots.length">
+  <div class="parrot" *ngFor="let parrot of parrots">
     <h1>{{ parrot.name }}</h1>
     <img src="{{ parrot.img }}" />
     <p>{{ parrot.desc }}</p>
+    <button
+      *ngIf="parrot.option"
+      [ngClass]="{
+        owned: parrot.option == 'owned',
+        wanted: parrot.option == 'wanted',
+        'looks-nice': parrot.option == 'looks cool'
+      }"
+      disabled
+    >
+      {{ parrot.option }}
+    </button>
     <button (click)="delete(parrot.name)">delete</button>
   </div>
 </div>
