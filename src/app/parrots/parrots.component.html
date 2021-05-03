@@ -1,17 +1,17 @@
 <p><input placeholder="name" type="text" id="name" name="name" #name /></p>
 <p><input placeholder="image url" type="url" id="img" name="img" #img /></p>
+<input type="checkbox" id="owned" name="owned" value="owned" #owned />
+<label for="owned">owned</label>
+<input type="checkbox" id="wanted" name="wanted" value="wanted" #wanted />
+<label for="wanted">wanted</label>
 <input
-  placeholder="options"
-  type="text"
-  name="options"
-  list="optionsList"
-  #option
+  type="checkbox"
+  id="looksNice"
+  name="looksNice"
+  value="looks cool"
+  #looksNice
 />
-<datalist id="optionsList">
-  <option value="owned"></option>
-  <option value="looks cool"></option>
-  <option value="wanted"></option>
-</datalist>
+<label for="looksNice">looks nice</label>
 <p>
   <input
     placeholder="description"
@@ -28,7 +28,7 @@
       name: name.value,
       img: img.value,
       desc: desc.value,
-      option: option.value
+      options: [owned.value, wanted.value, looksNice.value]
     })
   "
 >
@@ -40,17 +40,19 @@
     <h1>{{ parrot.name }}</h1>
     <img src="{{ parrot.img }}" />
     <p>{{ parrot.desc }}</p>
-    <button
-      *ngIf="parrot.option"
-      [ngClass]="{
-        owned: parrot.option == 'owned',
-        wanted: parrot.option == 'wanted',
-        'looks-nice': parrot.option == 'looks cool'
-      }"
-      disabled
-    >
-      {{ parrot.option }}
-    </button>
+    <div *ngFor="let option of parrot.options">
+      <!-- *ngIf="option" -->
+      <button
+        [ngClass]="{
+          owned: option == 'owned',
+          wanted: option == 'wanted',
+          'looks-nice': option == 'looks cool'
+        }"
+        disabled
+      >
+        {{ option }}
+      </button>
+    </div>
     <button (click)="delete(parrot.name)">delete</button>
   </div>
 </div>
