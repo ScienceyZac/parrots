@@ -28,7 +28,11 @@
       name: name.value,
       img: img.value,
       desc: desc.value,
-      options: [owned.value, wanted.value, looksNice.value]
+      options: [
+        [owned.value, owned.checked],
+        [wanted.value, wanted.checked],
+        [looksNice.value, looksNice.checked]
+      ]
     })
   "
 >
@@ -41,16 +45,16 @@
     <img src="{{ parrot.img }}" />
     <p>{{ parrot.desc }}</p>
     <div *ngFor="let option of parrot.options">
-      <!-- *ngIf="option" -->
       <button
+        *ngIf="option[1]"
         [ngClass]="{
-          owned: option == 'owned',
-          wanted: option == 'wanted',
-          'looks-nice': option == 'looks cool'
+          owned: option[0] == 'owned' && option[1],
+          wanted: option[0] == 'wanted' && option[1],
+          'looks-nice': option[0] == 'looks cool' && option[1]
         }"
         disabled
       >
-        {{ option }}
+        {{ option[0] }}
       </button>
     </div>
     <button (click)="delete(parrot.name)">delete</button>
