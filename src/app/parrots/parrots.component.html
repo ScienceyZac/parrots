@@ -1,6 +1,14 @@
-<p><input type="text" id="name" name="name" #name /></p>
-<p><input type="url" id="img" name="img" #img /></p>
-<p><input type="text" id="desc" name="description" #desc /></p>
+<p><input placeholder="name" type="text" id="name" name="name" #name /></p>
+<p><input placeholder="image url" type="url" id="img" name="img" #img /></p>
+<p>
+  <input
+    placeholder="description"
+    type="text"
+    id="desc"
+    name="description"
+    #desc
+  />
+</p>
 
 <button
   (click)="
@@ -19,5 +27,6 @@
     <h1>{{ parrot.name }}</h1>
     <img src="{{ parrot.img }}" />
     <p>{{ parrot.desc }}</p>
+    <button (click)="delete(parrot.name)">delete</button>
   </div>
 </div>
