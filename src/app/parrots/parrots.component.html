@@ -1,0 +1,23 @@
+<p><input type="text" id="name" name="name" #name /></p>
+<p><input type="url" id="img" name="img" #img /></p>
+<p><input type="text" id="desc" name="description" #desc /></p>
+
+<button
+  (click)="
+    addParrot({
+      name: name.value,
+      img: img.value,
+      desc: desc.value
+    })
+  "
+>
+  add parrot
+</button>
+
+<div *ngIf="parrots.length">
+  <div *ngFor="let parrot of parrots">
+    <h1>{{ parrot.name }}</h1>
+    <img src="{{ parrot.img }}" />
+    <p>{{ parrot.desc }}</p>
+  </div>
+</div>
