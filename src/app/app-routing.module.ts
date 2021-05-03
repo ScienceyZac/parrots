@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     component: ParrotsComponent,
   },
+  {
+    path: '**',
+    component: ParrotsComponent,
+  },
 ];
 
 @NgModule({
