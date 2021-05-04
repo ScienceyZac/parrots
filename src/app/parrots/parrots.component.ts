@@ -41,4 +41,7 @@ export class ParrotsComponent {
     console.log(this.parrots.filter((n) => n.name == name));
     console.log(this.parrots.filter((n) => n.name == name)[0]);
   };
+  edit = (name) => {
+    document.location.pathname = `/edit/${name}`;
+  };
 }

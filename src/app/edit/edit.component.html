@@ -1,0 +1,65 @@
+<div *ngIf="parrot">
+  <div class="options">
+    <p>
+      <input
+        placeholder="name"
+        type="text"
+        id="name"
+        name="name"
+        value="{{ parrot.name }}"
+        #name
+      />
+    </p>
+    <p>
+      <input
+        placeholder="image url"
+        type="url"
+        id="img"
+        name="img"
+        value="{{ parrot.img }}"
+        #img
+      />
+    </p>
+    <p>
+      <input
+        placeholder="description"
+        type="text"
+        id="desc"
+        name="description"
+        value="{{ parrot.desc }}"
+        #desc
+      />
+    </p>
+    <input type="checkbox" id="owned" name="owned" value="owned" #owned />
+    <label for="owned">owned</label>
+    <input type="checkbox" id="wanted" name="wanted" value="wanted" #wanted />
+    <label for="wanted">wanted</label>
+    <input
+      type="checkbox"
+      id="looksNice"
+      name="looksNice"
+      value="looks cool"
+      #looksNice
+    />
+    <label for="looksNice">looks nice</label>
+  </div>
+  <div class="buttons">
+    <button
+      (click)="
+        save({
+          name: name.value,
+          img: img.value,
+          desc: desc.value,
+          options: [
+            [owned.value, owned.checked],
+            [wanted.value, wanted.checked],
+            [looksNice.value, looksNice.checked]
+          ]
+        })
+      "
+    >
+      save
+    </button>
+    <button (click)="cancle()">cancle</button>
+  </div>
+</div>

@@ -1,5 +1,14 @@
 <p><input placeholder="name" type="text" id="name" name="name" #name /></p>
 <p><input placeholder="image url" type="url" id="img" name="img" #img /></p>
+<p>
+  <input
+    placeholder="description"
+    type="text"
+    id="desc"
+    name="description"
+    #desc
+  />
+</p>
 <input type="checkbox" id="owned" name="owned" value="owned" #owned />
 <label for="owned">owned</label>
 <input type="checkbox" id="wanted" name="wanted" value="wanted" #wanted />
@@ -12,15 +21,6 @@
   #looksNice
 />
 <label for="looksNice">looks nice</label>
-<p>
-  <input
-    placeholder="description"
-    type="text"
-    id="desc"
-    name="description"
-    #desc
-  />
-</p>
 
 <button
   (click)="
@@ -57,6 +57,7 @@
         {{ option[0] }}
       </button>
     </div>
+    <button (click)="edit(parrot.name)">edit</button>
     <button (click)="delete(parrot.name)">delete</button>
   </div>
 </div>
