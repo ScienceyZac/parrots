@@ -10,3 +10,6 @@
   background-color: green;
   color: white;
 }
+.img {
+  max-width: 100%;
+}

@@ -42,7 +42,7 @@
 <div class="parrots" *ngIf="parrots.length">
   <div class="parrot" *ngFor="let parrot of parrots">
     <h1>{{ parrot.name }}</h1>
-    <img src="{{ parrot.img }}" />
+    <img class="img" src="{{ parrot.img }}" />
     <p>{{ parrot.desc }}</p>
     <div *ngFor="let option of parrot.options">
       <button
