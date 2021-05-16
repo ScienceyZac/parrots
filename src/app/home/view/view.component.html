@@ -1,0 +1,21 @@
+<div class="parrots" *ngIf="parrots">
+  <div class="parrot" *ngFor="let parrot of parrots">
+    <h1>{{ parrot.name }}</h1>
+    <img class="img" src="{{ parrot.img }}" />
+    <p>{{ parrot.desc }}</p>
+    <div *ngFor="let option of parrot.options">
+      <button
+        *ngIf="option[1]"
+        [ngClass]="{
+          owned: option[0] == 'owned' && option[1],
+          wanted: option[0] == 'wanted' && option[1],
+          'looks-nice': option[0] == 'looks cool' && option[1]
+        }"
+        disabled
+      >
+        {{ option[0] }}
+      </button>
+    </div>
+    <button (click)="getDetails(parrot.name)">info</button>
+  </div>
+</div>

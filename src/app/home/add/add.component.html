@@ -1,0 +1,60 @@
+<div class="newParrot">
+  <div class="input">
+    <div class="text">
+      <p>enter info about your new parrot</p>
+      <p>
+        <input placeholder="name" type="text" id="name" name="name" #name />
+      </p>
+      <p>
+        <input placeholder="image url" type="url" id="img" name="img" #img />
+      </p>
+      <p>
+        <input
+          placeholder="description"
+          type="text"
+          id="desc"
+          name="description"
+          #desc
+        />
+      </p>
+      <input type="checkbox" id="owned" name="owned" value="owned" #owned />
+      <label for="owned">owned</label>
+      <input type="checkbox" id="wanted" name="wanted" value="wanted" #wanted />
+      <label for="wanted">wanted</label>
+      <input
+        type="checkbox"
+        id="looksNice"
+        name="looksNice"
+        value="looks cool"
+        #looksNice
+      />
+      <label for="looksNice">looks nice</label>
+    </div>
+    <div class="string">
+      <p>...or use a custom url from another device!</p>
+      <input type="url" placeholder="url" id="url" name="url" #url />
+    </div>
+    <br />
+  </div>
+
+  <button
+    (click)="
+      addParrot(
+        {
+          name: name.value,
+          img: img.value,
+          desc: desc.value,
+          options: [
+            [owned.value, owned.checked],
+            [wanted.value, wanted.checked],
+            [looksNice.value, looksNice.checked]
+          ]
+        },
+        url.value
+      )
+    "
+  >
+    add parrot
+  </button>
+  <button (click)="back()">back</button>
+</div>

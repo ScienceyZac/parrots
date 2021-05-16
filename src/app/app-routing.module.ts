@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditComponent } from './edit/edit.component';
-import { ParrotsComponent } from './parrots/parrots.component';
+import { FourOFourPageComponent } from './four-o-four-page/four-o-four-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ParrotsComponent,
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
-
   {
-    path: 'edit/:name',
-    component: EditComponent,
+    path: 'parrot',
+    loadChildren: () =>
+      import('./parrot/parrot.module').then((m) => m.ParrotModule),
+  },
+  {
+    path: '**',
+    component: FourOFourPageComponent,
   },
 ];
 
